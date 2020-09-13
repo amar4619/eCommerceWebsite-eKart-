@@ -1,0 +1,44 @@
+<%- include("_layout/header") -%>
+
+<br>
+<h1 class="page-header"><%= title %></h1>
+<div class="row">
+
+    
+    <div class="col-xs-12 col-md-5">
+        <img src="/product_images/<%= p._id %>/<%= p.image %>" alt="Hare bol" class="spi">
+        <br>
+    </div>
+
+    <div class="col-xs-12 col-md-7">
+        <p><%= p.desc %></p>
+        <p>Rs.<%= parseFloat(p.price).toFixed(2) %></p>
+        <% if(loggedIn){ %>
+        <p><a href="/cart/add/<%= p.slug %>">Add to Cart</a></p>
+        <% }else{ %>
+            <a href="/users/login"><button class="btn btn-primary"><b>Login to Buy</b></button> </a>
+            <% } %>
+        </div>
+
+    <div class="col-xs-12 g-llery">
+        <ul class="gallery">
+            <%  galleryfiles.forEach(function(g){%>
+            <% if(g != "thumbs" ){ %>
+
+            <li>
+                <a href="/product_images/<%= p._id %>/gallery/<%= g %>">
+                    <img src="/product_images/<%= p._id %>/gallery/thumbs/<%= g %>" alt="">
+                </a>
+            </li>
+
+            <% } %>
+            <% }) %>
+        </ul>
+    </div>
+
+
+</div>
+
+
+
+<%- include("_layout/footer") -%>

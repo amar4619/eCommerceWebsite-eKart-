@@ -1,0 +1,50 @@
+ h3, h4,p{
+    font-family: 'Anton', sans-serif;
+}
+
+h1,h2{
+    font-family: 'Merriweather', serif; 
+}
+
+.bg{
+    opacity:8;
+}
+img.pimage{
+    width: 150px;
+}
+a.pa{
+    display: inline-block;
+    height: 160px;
+}
+
+.row.products.p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+ img.spi{
+width: 100%;
+} 
+
+div.g-llery{
+    margin-top: 20px;
+}
+
+ul.gallery li{
+    display: inline-block;
+    padding:  20px;
+}
+
+img.cpi{
+    width: 100px;
+}
+table td{
+    vertical-align: middle !important ;
+}
+
+.alert-error {
+    color: #95e21a;
+    background-color: #5618e7;
+    border-color: #f5c6cb;
+}
+/*  */

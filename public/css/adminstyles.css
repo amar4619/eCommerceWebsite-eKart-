@@ -1,0 +1,29 @@
+h3, h4,p{
+    font-family: 'Anton', sans-serif;
+}
+
+h1,h2{
+    font-family: 'Merriweather', serif; 
+}
+.i{
+    width:100px;
+    height:80px;
+}
+
+ul.gallery{
+padding:0;
+}
+
+ul.gallery li:first-child{
+    margin-left: 0;
+    
+}
+ul.gallery li{
+    margin: 20px;
+    display: inline-block;
+    list-style: none;
+}
+
+table td{
+    vertical-align: middle !important ;
+}

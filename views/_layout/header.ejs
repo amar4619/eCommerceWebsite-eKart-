@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Merriweather:wght@900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+  
+  
+</style>
+
+</head>
+
+<body>
+  <div class="bg"  style="background-image: url('/images/field3.jpg');
+  ">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark ">
+    <a class="navbar-brand" href="/">eKArt</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="nav navbar-nav mr-auto">
+        <% pages.forEach(function(page){ %>
+        <% if(page.slug == 'home'){%>
+        <a class="nav-link" id="i" onclick="a()" href="/"> <%= page.title %><span class="sr-only">(current)</span></a>
+        <% }else{%>
+        <li>
+          <a class="nav-link" id="i" onclick="a()" href="/<%= page.slug %>"><%= page.title %><span class="sr-only">(current)</span></a>
+        </li>
+        <% }})%>
+
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0 navbar-right">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+      <ul class="nav navbar-nav  navbar-left">
+
+        <% if(user){%>
+        <li>
+          <a class="nav-link i" href="/cart/checkout">My Cart(
+            <%  if(typeof cart !== 'undefined'){%>
+            <%=  cart.length %>
+            <% }else{ %>
+            0
+            <%  } %>)
+          </a>
+        </li>
+        <li><a class="nav-link "  href="/users/logout">HI <%= user.username %> Logout</a></li>
+        <%}else{%>
+        <li><a class="nav-link " href="/users/register">Register</a></li>
+        <li><a class="nav-link" href="/users/login">Login</a></li>
+        <% } %>
+
+        <% if(user && user.admin == 1){%>
+        <li><a class="nav-link" href="/admin/pages">Admin area</a></li>
+        <% }
+         if(user && user.admin == 2){ %>
+          <li><a class="nav-link" href="/admin/products">Farmer's Area</a></li>
+          <% } %>
+      </ul> 
+    </div>
+
+
+
+  </nav>
+
+  <script>
+function a()
+{
+  console.log("hi");
+  
+    document.getElementById(i).style.backgroundImage = url('/images/field3.jpg');
+  
+}
+
+  </script>
+  <div class="container">
+    <%- messages('messages', locals) %>
+    <br><br>
+
+    <% if(errors){%>
+    <% errors.forEach(function(error){%>
+    <div class="alert alert-danger">
+      <%= error.msg %>
+    </div>
+    <% }) %>
+    <% } %>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-3">
+        <h3>Categories</h3>
+        <ul class="list-group">
+          <a href="/products">
+            <li class="list-group-item">All products</li>
+          </a>
+          <% categories.forEach(function(c){ %>
+          <li class="list-group-item"><a href="/products/<%= c.slug %>"><%= c.title %></a></li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-md-1">
+
+      </div>
+      <div class="col-xs-12 col-md-8">
+

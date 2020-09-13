@@ -1,0 +1,52 @@
+<%- include("../_layout/adminheader") -%>
+
+
+<h2 class="product-title">Product</h2>
+<a href="/admin/products/add-product" class="btn btn-primary">Add a product</a>
+<br><br>
+
+<% if(count != 0){ %>   
+<table id="table" class="table table-striped align">
+  <thead class="thead-dark">
+    <tr class="home">
+
+      <th scope="col">Product</th>
+      <th scope="col">Price</th>
+      <th scope="col">Qty</th>
+      <th scope="col">Category</th>
+      <th scope="col">Product image  </th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% products.forEach(function(page){ %>
+    <tr id="id_<%= page._id %>" class="<%= page.slug %>">
+      <td><%= page.title %></td>
+      <td>Rs.<%= parseFloat(page.price).toFixed(2) %></td>
+      <td><%= page.qty %></td>
+      <td><%= page.category %></td>
+      <td>
+        
+         <% if(page.image == "") {%>  
+          
+        <img class="img-rounded i" src="/images/noimage.png" alt="hare bol" srcset="">
+        <% }else{ %> 
+        <img class="img-rounded i" src="/product_images/<%= page._id  %>/<%= page.image  %>" alt="Hare bol" srcset="">  
+        <!-- <img class="img-rounded i"  src="/product_images/<%= page.image  %>" alt="Hare bol" srcset="">   -->
+        <% } %>   
+    </td>
+      <td><a href="/admin/products/edit-product/<%= page._id%>">Edit</a></td>
+      <td><a class="confirmDeletion" href="/admin/products/delete-product/<%= page._id%>">Delete</a></td>
+     
+    </tr>
+    <% }); %>
+  </tbody>
+ 
+</table>
+<% }else{ %>
+    <h3>No products for the day</h3>   
+    <% } %>   
+
+<%- include("../_layout/adminfooter") -%>

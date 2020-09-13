@@ -1,0 +1,40 @@
+<%- include("_layout/header") -%>  
+<h1>Thank You🤩🤩</h1>
+<h2>Your Product will be delivered soon...</h2>
+<hr><hr>
+<table class="table table-striped align">
+    <th>Image</th>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Qty</th>
+    <th>Subtotal</th>
+    <% var total=0 %>
+    <% cart.forEach(function(p){ %>
+    <% var sub =parseFloat(p.price *p.qty).toFixed(2) %>
+    <tr>
+        <td><img class="cpi" src="<%= p.image%>" alt=""></td>
+        <td><%= p.title%></td>
+        <td>Rs.<%= p.price %></td>
+        <td><%= p.qty%></td>
+       
+        <td>Rs.<%= sub%></td>
+        <% total += +sub %>
+    </tr>
+    <%  }) %>
+    <tr>
+        <td colspan="5" align="right">
+            <b>Total:</b>Rs. <%= parseFloat(total).toFixed(2) %>
+        </td>
+
+    </tr>
+   
+
+
+
+</table>
+<br>
+
+
+
+
+<%- include("_layout/footer") -%>
